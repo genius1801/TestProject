@@ -1,10 +1,16 @@
 <div class="auth">
     <p>Please, enter login/password! </p>
     <div class="center">
-    <span>Login</span><input type="text" ng-model="user.login"> <br/>
-    <span>Password</span><input type="password" ng-model="user.password"> <br/>
-			<button ng-disabled="!user.login && !user.password" ng-click="send()">
-				<span>Next</span>
-			</button>
+        <div>
+            <span>Login</span>
+        </div>
+        <input type="text" ng-model="user.login"> 
+        <div>
+            <span>Password</span>
+        </div>
+        <input type="password" ng-model="user.password"> <br/>
+        <button ng-disabled="!user.login && !user.password" ng-click="send()">
+            <span>Next</span>
+        </button>
     </div>
 </div>

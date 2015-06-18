@@ -9,6 +9,7 @@ function Task($http, $q) {
             isAuth:false
 		},
 
+        //получение списка задач на основе данных авторизации
         getTaskList: function (){
             var user=this.user;
             var t;
@@ -28,6 +29,7 @@ function Task($http, $q) {
            
         },
         
+        //получение списка пользователей и определение, прошла ли авторизация
         getAuth: function (){
             var deferred = $q.defer();
             var bool=false;
@@ -48,15 +50,17 @@ function Task($http, $q) {
 			return deferred.promise;
         },
         
+        //изменение статуса задачи
         setTask: function(id,atr,value){
             var t=this.user.task;
             for(var i=0; i<t.length;i++){
                 if(id==t[i].name){
-                    t[i].status=value;
+                    t[i][atr]=value;
                 }
             };
         },
         
+        //изменение всей задачи по имени/id
         setAllTask: function(id,detail){
             var t=this.user.task;
             for(var i=0; i<t.length;i++){
@@ -67,6 +71,7 @@ function Task($http, $q) {
             console.log(t);
         },
         
+        //функция инициализации при успешной авторизации
         init: function(){
             var t=this;
             var deferred = $q.defer();

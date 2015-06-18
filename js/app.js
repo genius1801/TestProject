@@ -1,12 +1,5 @@
 angular.module('taskApp', ['angular-repeat-n', 'ui.router','dndLists'])
-    .directive('taskdedail',function() {
-        return {
-            restrict: 'AE',
-            replace: true,
-            scope: true,
-            template:"<div><div>{{item.name}}</div><div><span>Time data - {{item.date}}</span><div><span>Estimated - {{item.estimated}}<span><div><span>Priority - {{item.priority}}</span></div>"
-        };
-    })
+    .directive('taskdedail',taskDelail)
     .service('TaskService',['$http', '$q', Task])
     .service('SessionService', ['TaskService','$location','$state',routing])
     .controller('loginCtrl',['$scope', 'TaskService', '$state',loginCtrl])
