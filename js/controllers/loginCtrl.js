@@ -10,10 +10,10 @@ function loginCtrl($scope, TaskService, $state){
                 });
             }
             else {
-                alert('Error');
+                alert('Incorrect username or password. Check the entered data.');
             };
         },function(){
-            alert('Error');
+            alert('Incorrect username or password. Check the entered data.');
         });
 	}; 
 }

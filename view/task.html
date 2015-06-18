@@ -60,40 +60,14 @@
       </table>
     </div>
 <div ng-if="!checked">
-    <div class="simpleDemo row">
+    <div class="row" style="margin-top:10px;">
 
-    <div class="col-md-8">
-        <div class="row">
-            <div  class="col-md-6">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">В процессе выполнения</h3>
-                    </div>
-                    <div class="panel-body" >
-                        <div > 
-                            <ul dnd-list="Process">
-
-                                <li ng-click="delails(item)" ng-repeat="item in task| filter:'Process'|orderBy:'priority'"
-                                    dnd-draggable="item"
-                                    dnd-moved="list.splice($index, 1)"
-                                    dnd-effect-allowed="move"
-                                    dnd-selected="models.selected = item"
-                                    >
-                                    <taskdedail></taskdedail>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
      <div class="col-md-8">
         <div class="row">
             <div  class="col-md-6">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Постановка задачи</h3>
+                        <h3 class="panel-title">New task</h3>
                     </div>
                     <div class="panel-body" >
                         <div > 
@@ -114,12 +88,39 @@
             </div>
         </div>
     </div>
+        
     <div class="col-md-8">
         <div class="row">
             <div  class="col-md-6">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Завершено</h3>
+                        <h3 class="panel-title">Process</h3>
+                    </div>
+                    <div class="panel-body" >
+                        <div > 
+                            <ul dnd-list="Process">
+
+                                <li ng-click="delails(item)" ng-repeat="item in task| filter:'Process'|orderBy:'priority'"
+                                    dnd-draggable="item"
+                                    dnd-moved="list.splice($index, 1)"
+                                    dnd-effect-allowed="move"
+                                    dnd-selected="models.selected = item"
+                                    >
+                                    <taskdedail></taskdedail>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="row">
+            <div  class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Complete</h3>
                     </div>
                     <div class="panel-body" >
                         <div > 

@@ -7,6 +7,8 @@ function taskCtrl($scope, TaskService, $state){
 	    });
     };
     
+    $scope.order='name';
+    
     //первичное получение списка задач, т.к. setIntervar выполняет функцию после периода времени
     if(TaskService.user.task!==[])
     {
@@ -17,7 +19,7 @@ function taskCtrl($scope, TaskService, $state){
     }
     
     //$interval($scope.getT, 5000);
-    setInterval($scope.getT,10000); //10 секунд
+    setInterval($scope.getT,500000); //500 секунд
     
     $scope.checked=true; //сначала вывести в табличной форме, false - вывод scrum доски
     
