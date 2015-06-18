@@ -1,3 +1,4 @@
 var Const = {
-    device: "http://127.0.0.1:8080"
+    task: "/js/json/task-odl.json",
+    auth: "/js/json/auth.json"
 };
