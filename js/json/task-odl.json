@@ -1,0 +1,166 @@
+[
+  {
+    "login": "Tom",
+    "tasklist": [
+      {
+        "name": "Create a home page",
+        "description": "Create a page with a greeting block, menu, authorization",
+        "date": "25/02/15",
+        "priority": 2,
+        "estimated": "20h",
+        "elapsed": "19h",
+        "status": "Complete"
+      },
+      {
+        "name": "Edit menu",
+        "description": "Change the name of the menu items",
+        "date": "10/03/15",
+        "priority": 1,
+        "estimated": "16h",
+        "elapsed": "14h",
+        "status": "Complete"
+      },
+      {
+        "name": "Implementation of authorization",
+        "description": "Identification, authentication and authorization of users",
+        "date": "28/02/15",
+        "priority": 2,
+        "estimated": "26h",
+        "elapsed": "",
+        "status": "Process"
+      },
+      {
+        "name": "Adding a logo",
+        "description": "Adding a logo to the home and go to a home",
+        "date": "10/03/15",
+        "priority": 2,
+        "estimated": "10h",
+        "elapsed": "",
+        "status": "New"
+      }
+    ]
+  },
+  {
+    "login": "Jon",
+    "tasklist": [
+      {
+        "name": "Content for the main page",
+        "description": "Content a welcome unit at the main page",
+        "date": "10/03/15",
+        "priority": 2,
+        "estimated": "12h",
+        "elapsed": "10h",
+        "status": "Complete"
+      },
+      {
+        "name": "Filling the database",
+        "description": "Filling database data for testing",
+        "date": "15/03/15",
+        "priority": 1,
+        "estimated": "22h",
+        "elapsed": "",
+        "status": "Process"
+      },
+      {
+        "name": "Formatting text greetings",
+        "description": "Adding padding, split into paragraphs, highlighting the main",
+        "date": "25/03/15",
+        "priority": 3,
+        "estimated": "8h",
+        "elapsed": "",
+        "status": "New"
+      },
+      {
+        "name": "Editing greetings",
+        "description": "Correction of typographical errors on the main page",
+        "date": "25/03/15",
+        "priority": 2,
+        "estimated": "6h",
+        "elapsed": "",
+        "status": "New"
+      }
+    ]
+  },
+  {
+    "login": "Peter",
+    "tasklist": [
+      {
+        "name": "Layout of the main page",
+        "description": "Layout of the main page in accordance with the attached description",
+        "date": "25/02/15",
+        "priority": 1,
+        "estimated": "22h",
+        "elapsed": "21h",
+        "status": "Complete"
+      },
+      {
+        "name": "Validation of form",
+        "description": "Validation login and registration forms",
+        "date": "18/03/15",
+        "priority": 2,
+        "estimated": "15h",
+        "elapsed": "",
+        "status": "Process"
+      },
+      {
+        "name": "Edit styles",
+        "description": "Edit text size, resize elements on the home page",
+        "date": "05/03/15",
+        "priority": 3,
+        "estimated": "10h",
+        "elapsed": "",
+        "status": "Process"
+      }
+    ]
+  },
+  {
+    "login": "Sara",
+    "tasklist": [
+      {
+        "name": "Test main page",
+        "description": "Checking the elements, page content, menu items",
+        "date": "02/03/15",
+        "priority": 1,
+        "estimated": "5h",
+        "elapsed": "4h",
+        "status": "Complete"
+      },
+      {
+        "name": "Test authorization",
+        "description": "Testing authorization and user registration",
+        "date": "9/03/15",
+        "priority": 1,
+        "estimated": "7h",
+        "elapsed": "8h",
+        "status": "Complete"
+      },
+      {
+        "name": "Test layout",
+        "description": "Edit text size, resize elements on the home page",
+        "date": "09/03/15",
+        "priority": 2,
+        "estimated": "10h",
+        "elapsed": "",
+        "status": "Process"
+      },
+      {
+        "name": "Test validation of form",
+        "description": "Test validation login and registration forms",
+        "date": "20/03/15",
+        "priority": 1,
+        "estimated": "3h",
+        "elapsed": "",
+        "status": "New"
+      },
+      {
+        "name": "Load testing",
+        "description": "Load testing applications",
+        "date": "05/03/15",
+        "priority": 2,
+        "estimated": "15h",
+        "elapsed": "",
+        "status": "New"
+      }
+    ]
+  }
+]

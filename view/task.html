@@ -1,0 +1,149 @@
+<div>
+<div class="center"><input  type="checkbox" ng-model="checked"/><span>Scrum/table view</span></div>
+<div ng-if="checked" class="center" style="width:600px;">
+<input type="search"  placeholder="Filter by All Columns" ng-model="search"/>
+
+    <table class="table-condensed center" style="width:auto;">
+        <thead style="background-color: lightgray;">
+          <tr>
+            <td></td>
+            <td ng-click="reverce=!reverce;order='name';">
+              <span>Name</span>
+                <i ng-if="order=='name' && !reverce" class="icon-arrow-up"></i>
+                <i ng-if="order=='name' && reverce" class="icon-arrow-down"></i>
+            </td>
+            <td ng-click="reverce=!reverce;order='status';"><span>Status</span>
+              <i ng-if="order=='status' && !reverce" class="icon-arrow-up"></i>
+            <i ng-if="order=='status' && reverce" class="icon-arrow-down"></i></td>
+            <td ng-click="reverce=!reverce;order='date';"><span>Date</span>
+                <i ng-if="order=='date' && !reverce" class="icon-arrow-up"></i>
+                <i ng-if="order=='date' && reverce" class="icon-arrow-down"></i></td>
+            <td><span> </span></td>
+            <td><span> </span></td>
+          </tr>  
+        </thead>
+        <tbody>
+          <tr ng-repeat-start="person in task|filter:search| orderBy:order:reverce" ><!--ng-click="person.expanded = !person.expanded"-->
+            <td>
+              <button ng-if="person.expanded" ng-click="person.expanded = false">-</button>
+              <button ng-if="!person.expanded" ng-click="person.expanded = true">+</button>
+            </td>
+            <td><p  ng-click="f(person)">{{person.name}}</p></td><!--ui-sref="taskevent({name:person.name})"-->
+            <td>{{person.status}}</td>
+            <td>{{person.date}}</td>
+            <td><a ng-click="delails(person)">Details</a></td>
+            <td><a ng-click="edit(person)"><i class="icon-pencil"></i></a></td>
+          </tr>
+          <tr ng-if="person.expanded" ng-repeat-end="">
+              <td colspan="3">
+                  <table class="table-condensed">
+                    <thead style="background-color: lightgray;">
+                        <tr>
+                            <td></td>
+                            <td>Description</td>
+                            <td>Priority</td>
+                            <td>Estimated</td>
+                        </tr>  
+                    </thead>
+                    <tbody>
+                        <tr>  
+                            <td></td>
+                            <td>{{person.description}}</td>
+                            <td>{{person.priority}}</td>
+                            <td>{{person.estimated}}</td>
+                        </tr>
+                    </tbody>
+                  </table>
+                  </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+<div ng-if="!checked">
+    <div class="simpleDemo row">
+
+    <div class="col-md-8">
+        <div class="row">
+            <div  class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">В процессе выполнения</h3>
+                    </div>
+                    <div class="panel-body" >
+                        <div > 
+                            <ul dnd-list="Process">
+
+                                <li ng-click="delails(item)" ng-repeat="item in task| filter:'Process'|orderBy:'priority'"
+                                    dnd-draggable="item"
+                                    dnd-moved="list.splice($index, 1)"
+                                    dnd-effect-allowed="move"
+                                    dnd-selected="models.selected = item"
+                                    >
+                                    <taskdedail></taskdedail>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="col-md-8">
+        <div class="row">
+            <div  class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Постановка задачи</h3>
+                    </div>
+                    <div class="panel-body" >
+                        <div > 
+                            <ul dnd-list="New">
+
+                                <li ng-click="delails(item)" ng-repeat="item in task| filter:'New'|orderBy:'priority'"
+                                    dnd-draggable="item"
+                                    dnd-moved="list.splice($index, 1)"
+                                    dnd-effect-allowed="move"
+                                    dnd-selected="models.selected = item"
+                                    >
+                                    <taskdedail></taskdedail>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="row">
+            <div  class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Завершено</h3>
+                    </div>
+                    <div class="panel-body" >
+                        <div > 
+                            <ul dnd-list="Complete">
+
+                                <li ng-click="delails(item)" ng-repeat="item in task| filter:'Complete'|orderBy:'priority'"
+                                    dnd-draggable="item"
+                                    dnd-moved="list.splice($index, 1)"
+                                    dnd-effect-allowed="move"
+                                    dnd-selected="models.selected = item"
+                                    >
+                                    <taskdedail></taskdedail>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	</div>
+</div>
+
+<div ui-view></div>
+</div>
