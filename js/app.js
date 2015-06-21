@@ -1,11 +1,11 @@
-angular.module('taskApp', ['angular-repeat-n', 'ui.router', 'dndLists'])
+angular.module('taskApp', ['angular-repeat-n', 'ui.router', 'dndLists','ngStorage'])
     .directive('taskdedail', taskDelail)
 
-    .service('TaskService', ['$http', '$q', Task])
-    .service('SessionService', ['TaskService', '$location', '$state', routing])
+    .service('TaskService', ['$http', '$q','$localStorage', Task])
+    .service('SessionService', ['TaskService', '$location', '$state','$injector', routing])
 
     .controller('loginCtrl', ['$scope', 'TaskService', '$state', loginCtrl])
-    .controller('taskCtrl', ['$scope', 'TaskService', '$state', taskCtrl])
+    .controller('taskCtrl', ['$scope', 'TaskService', '$state','$localStorage', taskCtrl])
     .controller('taskDetailCtrl', ['$scope', 'TaskService', '$state', '$stateParams', taskDetailCtrl])
     .controller('editDetailCtrl', ['$scope', 'TaskService', '$state', '$stateParams', editCtrl])
 
@@ -34,17 +34,21 @@ angular.module('taskApp', ['angular-repeat-n', 'ui.router', 'dndLists'])
 
             })
             .state('edittask', {
-                url: '/edit/:name',
-                controller: 'editDetailCtrl',
-                templateUrl: 'view/edit.html'
+                //parent: 'task',
+                url: '/edit/',
+                templateUrl: 'view/edit.html',
+                params: {'name':null},
+                controller: 'editDetailCtrl'
+                
             });
     }])
 
-	.run(['$q', '$rootScope', '$state', 'SessionService', function ($q, $rootScope, $state, SessionService) {
+	.run(['$q', '$rootScope', '$state', 'SessionService','$localStorage', function ($q, $rootScope, $state, SessionService,$localStorage) {
 
 	    // on state change
 	    $rootScope.$on('$stateChangeSuccess', function (e, toState, toParams, fromState, fromParams) {
 	        var state = toState.name.match(/\.(.*)/);
+            $rootScope.user = $localStorage.user;
 	        $rootScope.prevState = fromState.name;
 	        $rootScope.stateName = toState.name;
 	        $rootScope.state = state ? state[1] : toState.name;

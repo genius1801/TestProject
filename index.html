@@ -12,6 +12,7 @@
 		<script type="text/javascript" src="js//modules/angular-ui-router.min.js"></script>
 		<script type="text/javascript" src="js/modules/angular-repeat-n.min.js"></script>
         <script type="text/javascript" src="js/modules/angular-drag-and-drop-lists.js"></script>
+        <script type="text/javascript" src="js/modules/ngStorage.js"></script>
 
         <!-- directives -->
 		<script type="text/javascript" src="js/directives/taskdetail.js"></script>
@@ -31,5 +32,8 @@
         <script type="text/javascript" src="js/constant.js"></script>
         
     </head>
-	<body ng-app="taskApp" ui-view></body>
+	<body ng-app="taskApp">
+        <div style="margin:auto; width:600px; text-align:right;" ng-if="$root.user">{{$root.user.login}}</div>
+        <div ui-view></div>
+    </body>
 </html>

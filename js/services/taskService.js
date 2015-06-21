@@ -1,4 +1,4 @@
-function Task($http, $q) {
+function Task($http, $q,$localStorage) {
 
     return {
         // user data
@@ -16,8 +16,9 @@ function Task($http, $q) {
             var deferred = $q.defer();
             $http.get(Const.task).then(function (response) {
                 t = response.data;
+                
                 for (var i = 0; i < t.length; i++) {
-                    if (t[i].login == user.login) {
+                    if (t[i].login ==$localStorage.user.login) {
                         user.task = t[i].tasklist;
                     }
                 }
@@ -39,6 +40,7 @@ function Task($http, $q) {
                 for (var i in y) {
                     if (user.login == y[i].login && user.password == y[i].password) {
                         user.isAuth = true;
+                        $localStorage.user=user;
                     }
                 }
                 deferred.resolve(response);

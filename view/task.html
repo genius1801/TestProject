@@ -1,8 +1,9 @@
 <div>
-<div class="center"><input  type="checkbox" ng-model="checked"/><span>Scrum/table view</span></div>
+<div style="margin:auto; width:600px; text-align:right;"><span ng-click="logout()">Log out</span></div>
+    <div class="center"><input  type="checkbox" ng-model="checked"/><span>Scrum/table view</span></div>
+
 <div ng-if="checked" class="center" style="width:600px;">
 <input type="search"  placeholder="Filter by All Columns" ng-model="search"/>
-
     <table class="table-condensed center" style="width:auto;">
         <thead style="background-color: lightgray;">
           <tr>

@@ -1,4 +1,4 @@
-function taskCtrl($scope, TaskService, $state) {
+function taskCtrl($scope, TaskService, $state,$localStorage) {
 
     //получение списка задач
     $scope.getT = function () {
@@ -10,8 +10,10 @@ function taskCtrl($scope, TaskService, $state) {
     $scope.order = 'name';
 
     //первичное получение списка задач, т.к. setIntervar выполняет функцию после периода времени
-    if (TaskService.user.task !== []) {
+    if ($scope.task) {
         $scope.task = TaskService.user.task;
+       // $scope.getT();
+        console.log(TaskService.user.task);
     } else {
         $scope.getT();
     }
@@ -30,5 +32,12 @@ function taskCtrl($scope, TaskService, $state) {
     //передача параметра в состояние edit
     $scope.edit = function (person) {
         $state.go('edittask', { name: JSON.stringify(person) });
+    }
+    
+    //передача параметра в состояние edit
+    $scope.logout = function (person) {
+        $localStorage.user=null;
+        
+        $state.go('login');
     }
 }
