@@ -34,14 +34,14 @@
         
     </head>
 	<body ng-app="taskApp">
-        <header style="margin:auto; width:600px; text-align:right;" ng-if="user">
+        <header style="margin:auto; width:600px; text-align:right;">
             <div style="text-align:center; background-color:#E7E8E8; height: 40px; font-size: 25px;"><span>Test Project in Service JS developer</span></div>
-            <span>Welcome, {{user}}</span>
+            <span  ng-if="user">Welcome, {{user}}</span>
             <div ng-if="user"><a ng-click="logout()">Log out</a></div>
             <div ng-if="!user"><a ui-sref="login">Log in</a></div>
         </header>
         <div style="margin:auto; width:600px;" ui-view></div>
-        <footer style="margin:auto; width:600px;">
+        <footer style="margin:auto; width:600px; margin-top:10px;">
             <div style="text-align:center; background-color:#E7E8E8; height: 40px; font-size: 13px;">
                 <span>© 2015 - </span>
                 <span>Created by Gresko E.A.</span>

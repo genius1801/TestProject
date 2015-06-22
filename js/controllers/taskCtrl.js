@@ -7,7 +7,7 @@ function taskCtrl($scope, TaskService, $state,$cookies) {
         });
         $scope.datetime=new Date();
     };
-
+    $scope.datetime=new Date();
     $scope.order = 'name';
 
     //первичное получение списка задач, т.к. setIntervar выполняет функцию после периода времени
