@@ -37,8 +37,12 @@
                 <span>The test project for the vacancy "JS developer"</span>
             </div>
             <span  ng-if="user">Welcome, {{user}}</span>
-            <div ng-if="user"><a ng-click="logout()">Log out</a></div>
-            <div ng-if="!user"><a ui-sref="login">Log in</a></div>
+            <div ng-if="user">
+                <a ng-click="logout()">Log out</a>
+            </div>
+            <div ng-if="!user">
+                <a ui-sref="login">Log in</a>
+            </div>
         </header>
         <div style="margin:auto; width:600px;" ui-view></div>
         <footer style="margin:auto; width:600px; margin-top:10px;">

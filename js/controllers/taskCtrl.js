@@ -1,13 +1,13 @@
-function taskCtrl($scope, TaskService, $state,$cookies) {
+function taskCtrl($scope, TaskService, $state, $cookies) {
 
     //получение списка задач
     $scope.getTask = function () {
         TaskService.init().then(function () {;
             $scope.task = TaskService.user.task;
         });
-        $scope.datetime=new Date();
+        $scope.datetime = new Date();
     };
-    $scope.datetime=new Date();
+    $scope.datetime = new Date();
     $scope.order = 'name';
 
     //первичное получение списка задач, т.к. setIntervar выполняет функцию после периода времени
@@ -25,11 +25,11 @@ function taskCtrl($scope, TaskService, $state,$cookies) {
 
     //передача параметра в состояние taskevent
     $scope.delails = function (person) {
-        $state.go('task.taskevent', {id:person.id});
+        $state.go('task.taskevent', { id: person.id });
     }
 
     //передача параметра в состояние edit
     $scope.edit = function (person) {
-        $state.go('task.edittask', {id:person.id});
-    }    
+        $state.go('task.edittask', { id: person.id });
+    }
 }

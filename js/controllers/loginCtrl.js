@@ -1,6 +1,6 @@
-function loginCtrl($scope, TaskService, $state,$cookies) {
-    
-    if($cookies.user){
+function loginCtrl($scope, TaskService, $state, $cookies) {
+
+    if ($cookies.user) {
         $state.go('task');
     }
     $scope.user = TaskService.user;

@@ -1,4 +1,4 @@
-function Task($http, $q,$cookies) {
+function Task($http, $q, $cookies) {
 
     return {
         // user data
@@ -13,10 +13,10 @@ function Task($http, $q,$cookies) {
             var user = this.user;
             var t;
             var deferred = $q.defer();
-            var name=$cookies.user;
+            var name = $cookies.user;
             $http.get(Const.task).then(function (response) {
                 t = response.data;
-                
+
                 for (var i = 0; i < t.length; i++) {
                     if (t[i].login == name) {
                         user.task = t[i].tasklist;
@@ -27,18 +27,17 @@ function Task($http, $q,$cookies) {
                 deferred.reject(response);
             });
             return deferred.promise;
-
         },
-        
+
         //получение данных о задаче
         getTask: function (id) {
             var self = this;
-            var task=self.user.task;
-            var t=null;  
-            if(task){
+            var task = self.user.task;
+            var t = null;
+            if (task) {
                 for (var i = 0; i < task.length; i++) {
-                    if(task[i].id==id){
-                        t=task[i];
+                    if (task[i].id == id) {
+                        t = task[i];
                     }
                 }
             }
@@ -55,7 +54,7 @@ function Task($http, $q,$cookies) {
                 for (var i in y) {
                     if (user.login == y[i].login && user.password == y[i].password) {
                         user.isAuth = true;
-                        $cookies.user=user.login;
+                        $cookies.user = user.login;
                     }
                 }
                 deferred.resolve(response);
@@ -98,6 +97,5 @@ function Task($http, $q,$cookies) {
             });
             return deferred.promise;
         }
-
     }
 };
