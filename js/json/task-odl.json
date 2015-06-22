@@ -3,6 +3,7 @@
     "login": "Tom",
     "tasklist": [
       {
+        "id": 1,  
         "name": "Create a home page",
         "description": "Create a page with a greeting block, menu, authorization",
         "date": "25/02/15",
@@ -12,6 +13,7 @@
         "status": "Complete"
       },
       {
+        "id": 2, 
         "name": "Edit menu",
         "description": "Change the name of the menu items",
         "date": "10/03/15",
@@ -21,6 +23,7 @@
         "status": "Complete"
       },
       {
+        "id": 3, 
         "name": "Implementation of authorization",
         "description": "Identification, authentication and authorization of users",
         "date": "28/02/15",
@@ -30,6 +33,7 @@
         "status": "Process"
       },
       {
+        "id": 4, 
         "name": "Adding a logo",
         "description": "Adding a logo to the home and go to a home",
         "date": "10/03/15",
@@ -44,6 +48,7 @@
     "login": "Jon",
     "tasklist": [
       {
+        "id": 5, 
         "name": "Content for the main page",
         "description": "Content a welcome unit at the main page",
         "date": "10/03/15",
@@ -53,6 +58,7 @@
         "status": "Complete"
       },
       {
+        "id": 6, 
         "name": "Filling the database",
         "description": "Filling database data for testing",
         "date": "15/03/15",
@@ -62,6 +68,7 @@
         "status": "Process"
       },
       {
+        "id": 7, 
         "name": "Formatting text greetings",
         "description": "Adding padding, split into paragraphs, highlighting the main",
         "date": "25/03/15",
@@ -71,6 +78,7 @@
         "status": "New"
       },
       {
+        "id": 8, 
         "name": "Editing greetings",
         "description": "Correction of typographical errors on the main page",
         "date": "25/03/15",
@@ -85,6 +93,7 @@
     "login": "Peter",
     "tasklist": [
       {
+        "id": 9,   
         "name": "Layout of the main page",
         "description": "Layout of the main page in accordance with the attached description",
         "date": "25/02/15",
@@ -94,6 +103,7 @@
         "status": "Complete"
       },
       {
+        "id": 10, 
         "name": "Validation of form",
         "description": "Validation login and registration forms",
         "date": "18/03/15",
@@ -103,6 +113,7 @@
         "status": "Process"
       },
       {
+        "id": 11, 
         "name": "Edit styles",
         "description": "Edit text size, resize elements on the home page",
         "date": "05/03/15",
@@ -117,6 +128,7 @@
     "login": "Sara",
     "tasklist": [
       {
+        "id": 12, 
         "name": "Test main page",
         "description": "Checking the elements, page content, menu items",
         "date": "02/03/15",
@@ -126,6 +138,7 @@
         "status": "Complete"
       },
       {
+        "id": 13, 
         "name": "Test authorization",
         "description": "Testing authorization and user registration",
         "date": "9/03/15",
@@ -135,6 +148,7 @@
         "status": "Complete"
       },
       {
+        "id": 14, 
         "name": "Test layout",
         "description": "Edit text size, resize elements on the home page",
         "date": "09/03/15",
@@ -144,6 +158,7 @@
         "status": "Process"
       },
       {
+        "id": 15, 
         "name": "Test validation of form",
         "description": "Test validation login and registration forms",
         "date": "20/03/15",
@@ -153,6 +168,7 @@
         "status": "New"
       },
       {
+        "id": 16, 
         "name": "Load testing",
         "description": "Load testing applications",
         "date": "05/03/15",

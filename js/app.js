@@ -1,11 +1,11 @@
-angular.module('taskApp', ['angular-repeat-n', 'ui.router', 'dndLists','ngStorage'])
+angular.module('taskApp', ['ui.router', 'dndLists','ngCookies'])
     .directive('taskdedail', taskDelail)
 
-    .service('TaskService', ['$http', '$q','$localStorage', Task])
-    .service('SessionService', ['TaskService', '$location', '$state','$injector', routing])
+    .service('TaskService', ['$http', '$q','$cookies', Task])
+    .service('SessionService', ['TaskService','$injector',routing])
 
-    .controller('loginCtrl', ['$scope', 'TaskService', '$state', loginCtrl])
-    .controller('taskCtrl', ['$scope', 'TaskService', '$state','$localStorage', taskCtrl])
+    .controller('loginCtrl', ['$scope', 'TaskService', '$state', '$cookies',loginCtrl])
+    .controller('taskCtrl', ['$scope', 'TaskService', '$state','$cookies', taskCtrl])
     .controller('taskDetailCtrl', ['$scope', 'TaskService', '$state', '$stateParams', taskDetailCtrl])
     .controller('editDetailCtrl', ['$scope', 'TaskService', '$state', '$stateParams', editCtrl])
 
@@ -25,36 +25,43 @@ angular.module('taskApp', ['angular-repeat-n', 'ui.router', 'dndLists','ngStorag
 			    controller: 'taskCtrl'
 
 			})
-            .state('taskevent', {
-                parent: 'task',
-                //url: '/taskevent/:name',
-                params: { 'name': null },
+            .state('task.taskevent', {
+                //parent: 'task',
+                url: '/{id}',
+                params: {'id':null },
                 templateUrl: 'view/taskevent.html',
                 controller: 'taskDetailCtrl'
 
             })
-            .state('edittask', {
-                //parent: 'task',
-                url: '/edit/',
+            .state('task.edittask', {
+               // parent: 'task',
+                url: '/edit/{id}',
                 templateUrl: 'view/edit.html',
-                params: {'name':null},
+                params: {'id':null},
                 controller: 'editDetailCtrl'
-                
             });
     }])
 
-	.run(['$q', '$rootScope', '$state', 'SessionService','$localStorage', function ($q, $rootScope, $state, SessionService,$localStorage) {
+	.run(['$rootScope', '$state', 'SessionService','$cookies','$cookieStore', function ($rootScope, $state, SessionService,$cookies,$cookieStore) {
 
+        $rootScope.logout = function () {
+                $cookieStore.remove('user');
+                console.log($cookies);
+                //$cookies.remove[0];
+                $rootScope.user=null;
+                $state.go('login');
+            }
+        $rootScope.user = $cookies.user?$cookies.user:null;
 	    // on state change
 	    $rootScope.$on('$stateChangeSuccess', function (e, toState, toParams, fromState, fromParams) {
 	        var state = toState.name.match(/\.(.*)/);
-            $rootScope.user = $localStorage.user;
+            
 	        $rootScope.prevState = fromState.name;
 	        $rootScope.stateName = toState.name;
 	        $rootScope.state = state ? state[1] : toState.name;
 
 	        //проверка авторизации
-	        SessionService.checkAccess(event, toState, toParams, fromState, fromParams);
+	        SessionService.checkAccess();
 
 	    });
 	}]);

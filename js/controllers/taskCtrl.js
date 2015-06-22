@@ -1,43 +1,35 @@
-function taskCtrl($scope, TaskService, $state,$localStorage) {
+function taskCtrl($scope, TaskService, $state,$cookies) {
 
     //получение списка задач
-    $scope.getT = function () {
+    $scope.getTask = function () {
         TaskService.init().then(function () {;
             $scope.task = TaskService.user.task;
         });
+        $scope.datetime=new Date();
     };
 
     $scope.order = 'name';
 
     //первичное получение списка задач, т.к. setIntervar выполняет функцию после периода времени
-    if ($scope.task) {
-        $scope.task = TaskService.user.task;
-       // $scope.getT();
-        console.log(TaskService.user.task);
+    if (!TaskService.user.task) {
+        $scope.getTask();
     } else {
-        $scope.getT();
+        $scope.task = TaskService.user.task;
     }
 
     //$interval($scope.getT, 5000);
-    setInterval($scope.getT, 500000); //500 секунд
+    setInterval($scope.getTask, 500000); //500 секунд
 
     //сначала вывести в табличной форме, false - вывод scrum доски
     $scope.checked = true;
 
     //передача параметра в состояние taskevent
     $scope.delails = function (person) {
-        $state.go('taskevent', { name: JSON.stringify(person) });
+        $state.go('task.taskevent', {id:person.id});
     }
 
     //передача параметра в состояние edit
     $scope.edit = function (person) {
-        $state.go('edittask', { name: JSON.stringify(person) });
-    }
-    
-    //передача параметра в состояние edit
-    $scope.logout = function (person) {
-        $localStorage.user=null;
-        
-        $state.go('login');
-    }
+        $state.go('task.edittask', {id:person.id});
+    }    
 }

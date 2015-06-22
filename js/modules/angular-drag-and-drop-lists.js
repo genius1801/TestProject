@@ -323,7 +323,7 @@ angular.module('dndLists', [])
         //var targetArray = scope.$eval(element.attr('dnd-list'));
         scope.$apply(function() {
          // targetArray.splice(getPlaceholderIndex(), 0, transferredObject);
-            TaskService.setTask(transferredObject.name,'status',element.attr('dnd-list'));
+            TaskService.setTask(transferredObject.id,'status',element.attr('dnd-list'));
             //scope.getT();
         });
 

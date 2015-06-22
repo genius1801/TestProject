@@ -1,12 +1,11 @@
-function Task($http, $q,$localStorage) {
+function Task($http, $q,$cookies) {
 
     return {
         // user data
         user: {
-            task: [],
+            task: null,
             login: null,
-            password: null,
-            isAuth: false
+            password: null
         },
 
         //получение списка задач на основе данных авторизации
@@ -14,11 +13,12 @@ function Task($http, $q,$localStorage) {
             var user = this.user;
             var t;
             var deferred = $q.defer();
+            var name=$cookies.user;
             $http.get(Const.task).then(function (response) {
                 t = response.data;
                 
                 for (var i = 0; i < t.length; i++) {
-                    if (t[i].login ==$localStorage.user.login) {
+                    if (t[i].login == name) {
                         user.task = t[i].tasklist;
                     }
                 }
@@ -28,6 +28,21 @@ function Task($http, $q,$localStorage) {
             });
             return deferred.promise;
 
+        },
+        
+        //получение данных о задаче
+        getTask: function (id) {
+            var self = this;
+            var task=self.user.task;
+            var t=null;  
+            if(task){
+                for (var i = 0; i < task.length; i++) {
+                    if(task[i].id==id){
+                        t=task[i];
+                    }
+                }
+            }
+            return t;
         },
 
         //получение списка пользователей и определение, прошла ли авторизация
@@ -40,7 +55,7 @@ function Task($http, $q,$localStorage) {
                 for (var i in y) {
                     if (user.login == y[i].login && user.password == y[i].password) {
                         user.isAuth = true;
-                        $localStorage.user=user;
+                        $cookies.user=user.login;
                     }
                 }
                 deferred.resolve(response);
@@ -56,7 +71,7 @@ function Task($http, $q,$localStorage) {
         setTask: function (id, atr, value) {
             var t = this.user.task;
             for (var i = 0; i < t.length; i++) {
-                if (id == t[i].name) {
+                if (id == t[i].id) {
                     t[i][atr] = value;
                 }
             };
@@ -66,11 +81,10 @@ function Task($http, $q,$localStorage) {
         setAllTask: function (id, detail) {
             var t = this.user.task;
             for (var i = 0; i < t.length; i++) {
-                if (id == t[i].name) {
+                if (id == t[i].id) {
                     t[i] = detail;
                 }
             };
-            console.log(t);
         },
 
         //функция инициализации при успешной авторизации

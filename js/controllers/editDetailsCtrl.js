@@ -1,11 +1,26 @@
 function editCtrl($scope, TaskService, $state, $stateParams) {
 
-    //получение данных из параметра name 
-    $scope.event = JSON.parse($stateParams.name || null);
+    //получение данных из параметров 
+    if($stateParams.id){
+        if(!TaskService.user.task){
+            TaskService.init().then(function(){
+                $scope.event = TaskService.getTask();
+            });
+        }
+        $scope.event = TaskService.getTask($stateParams.id);
+        if(!$scope.event) {
+            alert("Error. Not find this task!");
+            $state.go("task");
+        };
+    }
+    else {
+        alert("Error. Not find this task!");
+        $state.go("task");
+    }
 
 
-    $scope.save = function () {
-        TaskService.setAllTask($scope.event.name, $scope.event);
+    $scope.saveTask = function () {
+        TaskService.setAllTask($scope.event.id, $scope.event);
         $state.go("task");
     };
 
