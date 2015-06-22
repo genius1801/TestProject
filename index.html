@@ -10,10 +10,8 @@
         <!-- angular -->
         <script type="text/javascript" src="js/modules/angular.min.js"></script>
 		<script type="text/javascript" src="js//modules/angular-ui-router.min.js"></script>
-<!--		<script type="text/javascript" src="js/modules/angular-repeat-n.min.js"></script>-->
         <script type="text/javascript" src="js/modules/angular-drag-and-drop-lists.js"></script>
         <script type="text/javascript" src="js/modules/angular-cookies.min.js"></script>
-        <script type="text/javascript" src="js/modules/ngStorage.js"></script>
 
         <!-- directives -->
 		<script type="text/javascript" src="js/directives/taskdetail.js"></script>
@@ -35,7 +33,9 @@
     </head>
 	<body ng-app="taskApp">
         <header style="margin:auto; width:600px; text-align:right;">
-            <div style="text-align:center; background-color:#E7E8E8; height: 40px; font-size: 25px;"><span>Test Project in Service JS developer</span></div>
+            <div style="text-align:center; background-color:#E7E8E8; height: 40px; font-size: 25px;">
+                <span>The test project for the vacancy "JS developer"</span>
+            </div>
             <span  ng-if="user">Welcome, {{user}}</span>
             <div ng-if="user"><a ng-click="logout()">Log out</a></div>
             <div ng-if="!user"><a ui-sref="login">Log in</a></div>
