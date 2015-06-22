@@ -46,16 +46,14 @@ angular.module('taskApp', ['ui.router', 'dndLists','ngCookies'])
 
         $rootScope.logout = function () {
                 $cookieStore.remove('user');
-                console.log($cookies);
-                //$cookies.remove[0];
                 $rootScope.user=null;
                 $state.go('login');
             }
-        $rootScope.user = $cookies.user?$cookies.user:null;
+        
 	    // on state change
-	    $rootScope.$on('$stateChangeSuccess', function (e, toState, toParams, fromState, fromParams) {
+	    $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
 	        var state = toState.name.match(/\.(.*)/);
-            
+            $rootScope.user = $cookies.user?$cookies.user:null;
 	        $rootScope.prevState = fromState.name;
 	        $rootScope.stateName = toState.name;
 	        $rootScope.state = state ? state[1] : toState.name;
