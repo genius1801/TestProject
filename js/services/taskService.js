@@ -11,15 +11,15 @@ function Task($http, $q, $cookies) {
         //получение списка задач на основе данных авторизации
         getTaskList: function () {
             var user = this.user;
-            var t;
+            var temp;
             var deferred = $q.defer();
             var name = $cookies.user;
             $http.get(Const.task).then(function (response) {
-                t = response.data;
+                temp = response.data;
 
-                for (var i = 0; i < t.length; i++) {
-                    if (t[i].login == name) {
-                        user.task = t[i].tasklist;
+                for (var i = 0; i < temp.length; i++) {
+                    if (temp[i].login == name) {
+                        user.task = temp[i].tasklist;
                     }
                 }
                 deferred.resolve(response);
@@ -33,64 +33,60 @@ function Task($http, $q, $cookies) {
         getTask: function (id) {
             var self = this;
             var task = self.user.task;
-            var t = null;
+            var currentTask = null;
             if (task) {
                 for (var i = 0; i < task.length; i++) {
                     if (task[i].id == id) {
-                        t = task[i];
+                        currentTask = task[i];
                     }
                 }
             }
-            return t;
+            return JSON.stringify(currentTask);
         },
 
         //получение списка пользователей и определение, прошла ли авторизация
         getAuth: function () {
             var deferred = $q.defer();
-            var bool = false;
             var user = this.user;
             $http.get(Const.auth).then(function (response) {
-                var y = response.data;
-                for (var i in y) {
-                    if (user.login == y[i].login && user.password == y[i].password) {
-                        user.isAuth = true;
+                var temp = response.data;
+                for (var i in temp) {
+                    if (user.login == temp[i].login && user.password == temp[i].password) {
                         $cookies.user = user.login;
                     }
                 }
                 deferred.resolve(response);
             }, function (response) {
-                user.isAuth = false;
                 deferred.reject(response);
             });
-            user.isAuth = bool;
             return deferred.promise;
         },
 
         //изменение статуса задачи
         setTask: function (id, atr, value) {
-            var t = this.user.task;
-            for (var i = 0; i < t.length; i++) {
-                if (id == t[i].id) {
-                    t[i][atr] = value;
+            var task = this.user.task;
+            for (var i = 0; i < task.length; i++) {
+                if (id == task[i].id) {
+                    task[i][atr] = value;
                 }
             };
         },
 
         //изменение всей задачи по имени/id
         setAllTask: function (id, detail) {
-            var t = this.user.task;
-            for (var i = 0; i < t.length; i++) {
-                if (id == t[i].id) {
-                    t[i] = detail;
+            var task = this.user.task;
+            for (var i = 0; i < task.length; i++) {
+                if (id == task[i].id) {
+                    task[i] = detail;
                 }
             };
         },
 
         //функция инициализации при успешной авторизации
         init: function () {
-            var t = this;
+            var self = this;
             var deferred = $q.defer();
-            t.getTaskList().then(function (response) {
+            self.getTaskList().then(function (response) {
                 deferred.resolve(response);
             }, function () {
                 deferred.reject(response);

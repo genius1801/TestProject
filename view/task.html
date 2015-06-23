@@ -14,17 +14,17 @@
         <thead style="background-color: lightgray;">
           <tr>
             <td></td>
-            <td ng-click="reverce=!reverce;order='name';">
+            <td ng-click="ordering('name')">
               <span>Name</span>
                 <i ng-if="order=='name' && !reverce" class="icon-arrow-up"></i>
                 <i ng-if="order=='name' && reverce" class="icon-arrow-down"></i>
             </td>
-            <td ng-click="reverce=!reverce;order='status';">
+            <td ng-click="ordering('status')">
                 <span>Status</span>
                 <i ng-if="order=='status' && !reverce" class="icon-arrow-up"></i>
                 <i ng-if="order=='status' && reverce" class="icon-arrow-down"></i>
             </td>
-            <td ng-click="reverce=!reverce;order='date';">
+            <td ng-click="ordering('date')">
                 <span>Date</span>
                 <i ng-if="order=='date' && !reverce" class="icon-arrow-up"></i>
                 <i ng-if="order=='date' && reverce" class="icon-arrow-down"></i>

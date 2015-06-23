@@ -8,7 +8,20 @@ function taskCtrl($scope, TaskService, $state, $cookies) {
         $scope.datetime = new Date();
     };
     $scope.datetime = new Date();
+    
     $scope.order = 'name';
+    $scope.reverce = false;
+    
+    $scope.ordering=function(name){
+        if($scope.order == name){
+            $scope.reverce = !$scope.reverce;
+        }
+        else{
+            $scope.reverce = false;
+        }
+        $scope.order = name;
+    }
+    
 
     //первичное получение списка задач, т.к. setIntervar выполняет функцию после периода времени
     if (!TaskService.user.task) {
