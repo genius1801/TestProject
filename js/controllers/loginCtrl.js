@@ -6,7 +6,7 @@ function loginCtrl($scope, TaskService, $state, $cookies) {
     $scope.user = TaskService.user;
     $scope.send = function () {
         TaskService.getAuth().then(function () {
-            if ($scope.user.isAuth) {
+            if ($cookies.user) {
                 TaskService.init().then(function () {
                     $state.go('task');
                 });
